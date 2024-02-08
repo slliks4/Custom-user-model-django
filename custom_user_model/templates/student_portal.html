@@ -1,0 +1,23 @@
+{% extends 'student_portal_base.html' %}
+{% load static %}
+
+{% block title %}
+home
+{% endblock %}
+    {% block content %}
+        <div class="student_portal_Body">
+            <div class="student_portal_body">
+                <div>
+                    <div class="p">
+                        <p>MRSOFT academy</p>
+                    </div>
+                    <h1>hello {{user.first_name}} {{user.last_name}}</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque similique repellendus cupiditate ad nostrum quo odit hic earum, praesentium sit autem id numquam quibusdam eius delectus perspiciatis soluta sunt eaque.</p>
+                    <a href="">get started</a>    
+                </div>
+                <div class="student_portal_body_img">
+                    <img src="{% static 'img/pic4.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    {% endblock %}

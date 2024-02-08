@@ -1,0 +1,9 @@
+<h1>this is the home</h1>
+<h3>
+    {{user.username}}
+</h3>
+<a href="{% url 'login' %}">login</a><br>
+<a href="{% url 'logout' %}">logout</a><br>
+{% for account in accounts %}
+{{account.username}} {{account.date_joined}} <br>
+{% endfor %}

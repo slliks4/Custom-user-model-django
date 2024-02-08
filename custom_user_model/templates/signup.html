@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>login</title>
+</head>
+<body>
+    <div class="login_body">
+        <div class="login_middle">
+            <h1>MR-SOFT signup</h1>
+            <form action="{% url 'user_signup' %}" method="POST">
+                {% csrf_token %}
+                {% for message in messages %}
+                <div class="login_error">
+                    <p>{{message}}</p>
+                </div>
+                {% endfor %}
+                <label for="id">first name</label>
+                <input type="text" name="first_name" placeholder="enter your firstname">
+                <label for="id">last name</label>
+                <input type="text" name="last_name" placeholder="enter your lastname">
+                <label for="id">username</label>
+                <input type="text" name="username" placeholder="enter username">
+                <label for="id">email</label>
+                <input type="email" name="email" placeholder="enter a valid email">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="enter a valid password">
+                <label for="password">confirm password</label>
+                <input type="password" name="password2" placeholder="enter a valid password">
+                <input type="submit" value="CREATE ACCOUNT">
+            </form>
+            <div class="login_options">
+                <a href="{% url 'login' %}">
+                    login
+                </a>
+                <a href="{% url 'home' %}">
+                    home
+                </a>
+            </div>
+        </div>
+        <footer>
+            <h5>
+                <a href="">copyright @2023 mrsoft accademy of nigeria</a>
+            </h5>
+            <h5>
+                port-harcourt, nigeria
+            </h5>
+        </footer>
+    </div>
+</body>
+</html>

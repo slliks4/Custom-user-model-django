@@ -1,0 +1,812 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+footer{
+    background-color: rgb(7, 7, 24);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+footer h5 a{
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+}
+footer h5 a:hover{
+    text-decoration: underline;
+}
+footer h5{
+    color: white;
+    text-transform: capitalize;
+}
+
+/* LOGIN_PAGE */
+.login_error p{
+    color:red;
+    padding: 10px 0px;
+}
+.login_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: max-content;
+}
+.login_middle{
+    margin: 60px auto;
+    width: 50%;
+}
+.login_middle h1{
+    text-align: center;
+    font-weight: 400;
+}
+.login_middle form{
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid rgb(185, 185, 185);
+}
+.login_middle form input{
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0px;
+    font-size: 15px;
+    border: 1px solid rgb(185, 185, 185);
+    transition: 1s ease;
+}
+.login_middle input[type=submit]{
+    cursor: pointer;
+}
+.login_middle input[type=submit]:hover{
+    background-color: rgb(7, 7, 24);
+    color: white;
+}
+.login_middle label{
+    font-weight: 500;
+}
+.login_middle .login_options{
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.login_middle .login_options>a{
+    display: block;
+    width: 45%;
+    border: 1px solid rgb(185, 185, 185);
+    color: black;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 1s ease;
+}
+.login_middle .login_options>a:hover{
+    background-color: rgb(7, 7, 24);
+    color: white;
+}
+
+
+/* LOGIN_SUCCESS PAGE */
+.login_successful_middle{
+    margin: 60px auto;
+    width: 50%;
+}
+.login_successful_middle h1{
+    text-align: center;
+    font-weight: 400;
+}
+.login_successful_middle form{
+    margin: 40px;
+    padding: 20px 0px;
+    border: 1px solid rgb(185, 185, 185);
+    text-align: center;
+}
+.login_successful_middle form h2{
+    text-transform: capitalize;
+}
+.login_successful_middle form p{
+    margin: 20px 15%;
+    line-height: 25px;
+}
+.login_successful_middle form a{
+    display: block;
+    width: 85%;
+    border: 1px solid rgb(185, 185, 185);
+    color: black;
+    padding: 15px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 1s ease;
+}
+.login_successful_middle form a:hover{
+    background-color: rgb(7, 7, 24);
+    color: white;
+}
+.login_successful_middle .account_maintenance{
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid rgb(185, 185, 185);
+    text-align: center;
+}
+.login_successful_middle .account_maintenance h2{
+    text-transform: capitalize;
+}
+.login_successful_middle .account_maintenance>div a{
+    display: block;
+    width: 85%;
+    border: 1px solid rgb(185, 185, 185);
+    color: black;
+    padding: 15px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 1s ease;
+}
+.login_successful_middle .account_maintenance>div a:hover{
+    background-color: rgb(7, 7, 24);
+    color: white;
+}
+
+
+
+/* STUNDET_PORTAL_HOME */
+.student_portal{
+    display: flex;
+}
+.student_portal header{
+    width: 20%;
+    height: 100vh;
+    padding: 20px;
+    background-color: rgb(7, 7, 24);
+    color: white;
+    position: fixed;
+}
+.student_portal_header_logout a{
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: 1s ease;
+}
+.student_portal_header_logout a:hover{
+    background-color: white;
+    color: rgb(7, 7, 24);
+}
+.student_portal header ul{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.student_portal header ul li{
+    margin: 15px 0px;
+    text-transform: capitalize;
+    list-style-type: none;
+}
+.student_portal header ul li a{
+    text-decoration: none;
+    color: white;
+    transition: .5s ease;
+}
+.student_portal header ul li a:hover{
+    color: gray;
+}
+.student_portal_Body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    margin-left: 20%;
+    padding: 20px 5%;
+}
+.student_portal_body{
+    display: flex;
+}
+.student_portal_body>div{
+    width: 50%;
+}
+.student_portal_body .p{
+    font-weight: bold;
+}
+.student_portal_body div h1{
+    text-transform: capitalize;
+    font-size: 50px;
+    font-weight: 500;
+}
+.student_portal_body p{
+    margin-top: 40px;
+    font-size: 20px;
+}
+.student_portal_body a{
+    display: block;
+    padding: 5px;
+    color: black;   
+    text-transform: capitalize;
+    text-decoration: none;
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 1s ease;
+}
+.student_portal_body a:hover{
+    background-color: rgb(7, 7, 24);
+    color: white;
+}
+.student_portal_body_img{
+    height: 100%;
+}
+.student_portal_body img{
+    width: 100%;
+    height: 400px;
+}
+
+
+
+/* STUDENT_PORTAL_SELF-SERVICES */
+.student_portal_services_body{
+    width: 80%;
+    margin-left: 20%;
+    padding: 20px 5%;
+}
+
+
+
+
+/* ADMISSION_PORTAL */
+.admission_logout{
+    border: 1px solid white;
+    border-radius: 12px;
+    margin-left: 10px;
+    padding: 5px;
+}
+.admission_portal header{
+    background-color: rgb(7, 7, 24);
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+.admission_portal header ul{
+    display: flex;
+}
+.admission_portal header ul li{
+    list-style-type: none;
+    padding: 0px 20px;
+}
+.admission_portal header .link a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+.active{
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+}
+.admission_portal_body{
+    padding: 60px 10%;
+}
+.admission_portal_body h1{
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+.admission_portal_information{
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    margin: 20px 0px;
+}
+.admission_portal_flex{
+    display: flex;
+    justify-content: space-between;
+}
+.admission_portal_left{
+    width: 60%;
+}
+.Myapplication_heading a,.Myapplication_body a,.events_heading a,.profile_heading a{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+.admission_portal_Myapplication{
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px 0px;
+}
+.Myapplication_heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Myapplication_body{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.Myapplication_body h4{
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+.Myapplication_detail{
+    width: 40%;
+}
+.Myapplication_status{
+    width: 20%;
+}
+.Myapplication_action{
+    width: 20%;
+}
+.admission_portal_events{
+    padding: 20px;
+    border: 1px solid black;
+    margin: 20px 0px;
+}
+.events_heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.admission_portal_profile{
+    padding: 20px;
+    border: 1px solid black;
+    margin: 20px 0px;
+}
+.admission_portal_profile h4{
+    text-transform: capitalize;
+}
+.profile_heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile_first{
+    margin: 20px 0px;
+}
+.profile_first li,.profile_second li{
+    text-transform: capitalize;
+    list-style-type: none;
+    padding-top: 10px;
+}
+.profile_second{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+.profile_second>ul{
+    width: 45%;
+}
+.profile_third{
+    margin: 40px 0px;
+    border-top: 1px solid gray;
+    padding: 20px 0px;
+}
+.profile_third h1{
+    font-size: 15px;
+    font-weight: bold;
+}
+.profile_third_body{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.admission_portal_right{
+    width: 30%;
+}
+.admission_portal_help{
+    border: 1px solid black;
+    margin: 20px 0px;
+    padding: 20px;
+}
+.admission_portal_spotlight{
+    border: 1px solid black;
+    margin: 20px 0px;
+    padding: 20px;
+}
+.admission_portal_spotlight img{
+    width: 100%;
+    height: 200px;
+    margin: 20px 0px;
+}
+
+
+
+/* APPLY ONLINE */
+.apply_body{
+    padding: 60px 10%;
+}
+.apply_body h1{
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 30px;
+}
+.application_listing{
+    border: 1px solid gray;
+    margin: 20px 0px;
+    padding: 20px;
+}
+.apply_body .listing{
+    margin: 40px;
+}
+.apply_body .listing>a{
+    display: block;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.apply_body .listing h2{
+    margin-bottom: 10px;
+}
+
+
+
+/* ONLINE APPLICATION */
+.online_application{
+    border: 1px solid gray;
+    margin: 20px 0px;
+    padding: 20px;
+}
+.online_application h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.online_application select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    text-transform: capitalize;
+}
+.online_application label{
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: capitalize;;
+}
+.online_application p{
+    margin: 20px 0px;
+}
+.button{
+    margin-top: 40px;
+    display: flex;
+}
+.button a{
+    display: block;
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 8px;
+    width: 10%;
+    background-color: white;
+    color: rgb(7, 7, 24);
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+}
+.button button{
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    width: 10%;
+    margin: 0px 10px 0px 0px;
+    color: white;
+    background-color: rgb(7, 7, 24);
+    cursor: pointer;
+}
+
+
+/* ONLINE APPLICATION REVIEW */
+.admission_portal_body .application_header{
+    display: flex;
+    align-items: center;
+}
+.application_main_body{
+    border: 1px solid black;
+    margin: 20px 0px;
+    padding: 20px;
+}
+.admission_portal_body .application_header a{
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 20px 20px 0px 0px;
+    text-transform: capitalize;
+}
+.application_body_heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+}
+.application_body_heading a{
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.application_body_page+.application_body_page{
+    display: none;
+    padding: 20px;
+}
+.application_body_page{
+    padding: 20px;
+}
+.application_body_page p{
+    margin: 20px 0px;
+}
+.application_body_page ul{
+    padding: 0px 40px;
+}
+.application_body_page ul li{
+    padding: 5px 0px;
+}
+.application_body_page h3{
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 10px 0px;
+}
+.application_body_page label{
+    text-transform: capitalize;
+    font-weight: 400;
+}
+.active{
+    color: red;
+    font-size: 20px;
+}
+
+/* ADMISSION_PORTAL_DOCUMENTS */
+.document_items{
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    margin: 0px 0px 40px;
+}
+.document_items h2, .recommendation_request h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 20px 0px;
+}
+.recommendation_request{
+    border-bottom: 1px solid gray;
+    margin: 40px 0px;
+    padding: 20px;
+}
+
+/* APPLICATION PLAN */
+
+.application_body_page p b{
+    text-transform: capitalize;
+}
+.online_application_plans .academic_plans{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_plans .academic_plans>div{
+    width: 48%;
+}
+.online_application_plans .academic_plans select{
+    margin: 10px 0px;
+    width: 100%;
+    padding: 10px;
+    text-transform: capitalize;
+}
+.online_application_plans select{
+    width: 100%;
+    padding: 10px;
+    text-transform: capitalize;
+    margin: 10px 0px;
+}
+.online_application_plans input[name=mrsoft_id]{
+    width: 100%;
+    padding: 10px;
+}
+
+/* APPLICATION PERSONAL */
+.online_application_personal h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+.online_application_personal select{
+    width: 48%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_personal label{
+    font-weight: bold;
+}
+.online_application_personal .personal_information{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.online_application_personal .personal_information>div{
+    width: 48%;
+}
+.online_application_personal .personal_information div input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_personal .permanent_address input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_personal .location{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.online_application_personal .location>div{
+    width: 48%;
+}
+.online_application_personal .location input,.online_application_personal .location select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_personal .contact_info{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_personal .contact_info>div{
+    width: 48%;
+}
+.online_application_personal .contact_info input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+/* APPLICATION DEMOGRAPHICS */
+.online_application_demographics h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+.online_application_demographics select{
+    width: 48%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_demographics label{
+    font-weight: bold;
+}
+.online_application_demographics .additional_info{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_demographics .additional_info>div{
+    width: 48%;
+}
+.online_application_demographics .additional_info select,.online_application_demographics .additional_info input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_demographics .information{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_demographics .information>div{
+    width: 48%;
+}
+.online_application_demographics .information select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+/* APPLICATION NEXT OF KIN */
+.online_application_next_of_kin .kin_info{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_next_of_kin .kin_info>div{
+    width: 48%;
+}
+.online_application_next_of_kin .kin_info select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_next_of_kin h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+.online_application_next_of_kin label{
+    font-weight: bold;
+}
+.online_application_next_of_kin .personal_information{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.online_application_next_of_kin .personal_information>div{
+    width: 48%;
+}
+.online_application_next_of_kin .personal_information div input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_next_of_kin .permanent_address input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_next_of_kin .location{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.online_application_next_of_kin .location>div{
+    width: 48%;
+}
+.online_application_next_of_kin .location input,.online_application_next_of_kin .location select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.online_application_next_of_kin .check_box input{
+    margin: 0px 10px;
+}
+
+/* APPLICATION DECLARATION */
+.online_application_declaration h2{
+    text-transform: capitalize;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+
+.online_application_declaration .check_box input{
+    margin: 0px 10px;
+}
+.online_application_declaration .signature{
+    display: flex;
+    justify-content: space-between;
+}
+.online_application_declaration .signature>div{
+    width: 48%;
+}
+.online_application_declaration .signature input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+/* APPLICATION ACADEMICS */
+
+.online_application_academics h2{
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.online_application_academics .high_school input,.online_application_academics .high_school select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+}

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>login successful</title>
+</head>
+<body>
+    <div class="login_body">
+        <div class="login_successful_middle">
+            <h1>MR-SOFT login</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2>log in successful</h2>
+                <p>
+                    you are now logged in to MRSOFT Login which allows you to access a number of services at MR-SOFT E learning.
+                </p>
+                <a href="{% url 'student_portal' %}">mrsoft student portal</a>
+                <p>
+                    Remember to log out and exit your browser when you are finished
+                </p>
+                <a href="{% url 'logout' %}">logout</a>
+            </form>
+            <div class="account_maintenance">
+                <h2>account maintenance</h2>
+                <div>
+                    <a href="">
+                        edit profile
+                    </a>
+                    <a href="">
+                        manage password reset options
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h5>
+            <a href="">copyright @2023 mrsoft accademy of nigeria</a>
+        </h5>
+        <h5>
+            port-harcourt, nigeria
+        </h5>
+    </footer>
+</body>
+</html>

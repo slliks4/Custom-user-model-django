@@ -1,0 +1,242 @@
+_______ CUSTOM USER MODEL
+FIRST GO TO YOUR settings.py and paste the code below
+AUTH_USER_MODEL = 'custom_model.Account' (where the custom_model is the name of your app and the Account is the name of the class in your model.)
+
+NEXT FOR YOUR MODEL PAGE USE THE CODE BELOW
+
+from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+class Myaccount_manager(BaseUserManager):
+    def create_user(self,email,username,first_name,last_name,birth_day,password=None):
+        if not email:
+            raise ValueError("users must have an email address")
+        if not username:
+            return ValueError("users must have a username")
+        user = self.model(
+            email = self.normalize_email(email),
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            birth_day=birth_day,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    def create_superuser(self,email,username,first_name,last_name,birth_day,password):
+        user = self.create_user(
+            email = self.normalize_email(email),
+            password=password,
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            birth_day=birth_day,
+        )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+
+
+class Account(AbstractBaseUser):
+    email = models.EmailField(verbose_name='email', max_length=60, unique=True)
+    username = models.CharField(max_length=30, unique=True)
+    first_name = models.CharField(max_length=100,blank=True)
+    last_name = models.CharField(max_length=100,blank=True)
+    birth_day = models.DateField(blank=True,null=True)
+    date_joined = models.DateTimeField(auto_now_add=True,verbose_name='date joined')
+    last_login = models.DateTimeField(auto_now_add=True, verbose_name='last login')
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email','first_name','last_name','birth_day']
+    objects = Myaccount_manager()
+
+    def __str__(self) -> str:
+        return f"{self.email} || {self.username}"
+    
+    def has_perm(self,perm, obj=None):
+        return self.is_admin
+    
+    def has_module_perms(self, app_label):
+        return True
+(NOTE: you can add as many field you want to your model just set them to blank true and in your views equal them to None e.g birthday=None)
+
+Next for your admin.py
+
+from django.contrib import admin
+from .models import Account
+from django.contrib.auth.admin import UserAdmin
+
+class AccoutAdmin(UserAdmin):
+    list_display = ('email','username','date_joined','last_login','is_admin','is_staff','is_superuser')
+    search_fields = ('email','username')
+    readonly_fields = ('date_joined','last_login')
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+admin.site.register(Account,AccoutAdmin)
+(NOTE: the class AccountAdmin is to customize the admin page and hashing of password)
+
+Next for your views
+from django.shortcuts import render,redirect
+from .models import Account
+from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.core.validators import EmailValidator
+from django.core.exceptions import ValidationError
+
+@login_required(login_url='login')
+def home(request):
+    accounts = Account.objects.all()
+    return render(request,'index.html',{'accounts':accounts})
+
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']    
+            user = authenticate(request, username=username,password=password)
+            if user is not None:
+                login(request, user)
+                return render(request, 'login_successful.html')
+            else:
+                messages.info(request, 'invalid login details')
+                return redirect('login')
+        else:
+            return render(request, 'login.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+def user_signup(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method == 'POST':
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            username = request.POST['username']
+            email = request.POST['email']
+            password = request.POST['password']
+            password2 = request.POST['password2']
+
+            def validate_email(email):
+                email_validator = EmailValidator()
+
+                try:
+                    email_validator(email)
+                    return True
+                
+                except ValidationError:
+                    return False
+                
+            email_is_valid = validate_email(email)
+            
+            if email_is_valid:
+                if password == password2:
+                    if Account.objects.filter(email=email).exists():
+                        messages.info(request, 'email already exists')
+                        return redirect('user_signup')
+                    elif Account.objects.filter(username=username).exists():
+                        messages.info(request, 'username already exists')
+                        return redirect('user_signup')
+                    else:
+                        user = Account.objects.create_user(first_name=first_name,last_name=last_name,email=email,username=username,password=password,birth_day=None)
+                        user.save()
+                        return redirect('login')
+                else:
+                    messages.info(request,'password mismatch')
+                    return redirect('user_signup')
+                
+            else:
+                messages.info(request, 'invalid email address')
+                return redirect('user_signup')                
+        
+        else:
+            return render(request, 'signup.html')
+(NOTE: always add all fields when registering a user and set the not needed one value to None, the validate email is to check if the email address is correct)
+
+for your templates
+LOGIN
+<form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                {% for message in messages %}
+                <div class="login_error">
+                    <p>{{message}}</p>
+                </div>
+                {% endfor %}
+                <label for="id">MR-SOFT Username or email</label>
+                <input type="text" name="username" placeholder="enter email or username">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="enter a valid password">
+                <input type="submit" value="LOG IN">
+            </form>
+
+SIGNUP
+            <form action="{% url 'user_signup' %}" method="POST">
+                {% csrf_token %}
+                {% for message in messages %}
+                <div class="login_error">
+                    <p>{{message}}</p>
+                </div>
+                {% endfor %}
+                <label for="id">first name</label>
+                <input type="text" name="first_name" placeholder="enter your firstname">
+                <label for="id">last name</label>
+                <input type="text" name="last_name" placeholder="enter your lastname">
+                <label for="id">username</label>
+                <input type="text" name="username" placeholder="enter username">
+                <label for="id">email</label>
+                <input type="email" name="email" placeholder="enter a valid email">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="enter a valid password">
+                <label for="password">confirm password</label>
+                <input type="password" name="password2" placeholder="enter a valid password">
+                <input type="submit" value="CREATE ACCOUNT">
+            </form>
+
+_______ DOUBLE LOGIN AUTHENTICATION (ACCEPT BOTH USERNAME AND EMAIL)
+
+create a file named backends.py and paste the code below:
+
+from django.contrib.auth import get_user_model
+from django.contrib.auth.backends import ModelBackend
+from django.db.models import Q
+
+class EmailOrUsernameModelBackend(ModelBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        User = get_user_model()
+
+        # Check if the username or email matches the provided input
+        try:
+            user = User.objects.get(Q(username=username) | Q(email=username))
+        except User.DoesNotExist:
+            return None
+
+        # Verify the password
+        if user.check_password(password):
+            return user
+
+    def get_user(self, user_id):
+        User = get_user_model()
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+
+NEXT GO TO settings.py and paste this below auth password validators
+AUTHENTICATION_BACKENDS = [
+    'custom_model.backends.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+where (custom_model is the name of the application that has the backends.py file)
+it overides the default login system
